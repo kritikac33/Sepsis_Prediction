@@ -1,0 +1,152 @@
+{
+  "description": "Patient-level held-out test bootstrap (200 resamples); paired CI is with-ICULOS minus without-ICULOS AUROC.",
+  "base_rate": 0.020276757977972324,
+  "test_windows": 17705,
+  "train_patients": 2158,
+  "test_patients": 540,
+  "with_iculos_feature_count": 211,
+  "without_iculos_feature_count": 206,
+  "xgb_monotone_constraints": null,
+  "models": {
+    "xgb": {
+      "with_iculos": {
+        "test_auroc": 0.8588893845626631,
+        "test_pr_auc": 0.13366148085447985,
+        "model_file": "xgboost_v2.pkl"
+      },
+      "without_iculos": {
+        "test_auroc": 0.8148134141527817,
+        "test_pr_auc": 0.0842043693055926,
+        "model_file": "xgb_noiculos.pkl"
+      },
+      "bootstrap": {
+        "with_iculos_auc_ci95": [
+          0.8092570886440579,
+          0.9051234080688881
+        ],
+        "without_iculos_auc_ci95": [
+          0.7740117352819085,
+          0.8469053888715626
+        ],
+        "with_iculos_pr_auc_ci95": [
+          0.0811949119952169,
+          0.3193179701279943
+        ],
+        "without_iculos_pr_auc_ci95": [
+          0.04144211381792864,
+          0.14262170791123024
+        ],
+        "paired_with_minus_without_auc_ci95": [
+          -0.008371755315540505,
+          0.09078343299171146
+        ],
+        "bootstrap_resamples": 200
+      }
+    },
+    "rf": {
+      "with_iculos": {
+        "test_auroc": 0.8853318675092906,
+        "test_pr_auc": 0.20560894365851445,
+        "model_file": "random_forest_v2.pkl"
+      },
+      "without_iculos": {
+        "test_auroc": 0.7712121343509313,
+        "test_pr_auc": 0.056809048179276025,
+        "model_file": "rf_noiculos.pkl"
+      },
+      "bootstrap": {
+        "with_iculos_auc_ci95": [
+          0.8423097594940816,
+          0.9241077213263205
+        ],
+        "without_iculos_auc_ci95": [
+          0.7225095830742566,
+          0.8150907751899394
+        ],
+        "with_iculos_pr_auc_ci95": [
+          0.1322124468426352,
+          0.3714267558054523
+        ],
+        "without_iculos_pr_auc_ci95": [
+          0.03692492237852435,
+          0.10309034252982201
+        ],
+        "paired_with_minus_without_auc_ci95": [
+          0.07824392991680912,
+          0.15697024612262916
+        ],
+        "bootstrap_resamples": 200
+      }
+    },
+    "gb": {
+      "with_iculos": {
+        "test_auroc": 0.863992549477182,
+        "test_pr_auc": 0.18437180700929906,
+        "model_file": "gradient_boosting_v2.pkl"
+      },
+      "without_iculos": {
+        "test_auroc": 0.8123570990173133,
+        "test_pr_auc": 0.06946458628524033,
+        "model_file": "gb_noiculos.pkl"
+      },
+      "bootstrap": {
+        "with_iculos_auc_ci95": [
+          0.8150526411760145,
+          0.9038657853413451
+        ],
+        "without_iculos_auc_ci95": [
+          0.7640552504502726,
+          0.8509948230913129
+        ],
+        "with_iculos_pr_auc_ci95": [
+          0.11845512372588925,
+          0.2993509673087983
+        ],
+        "without_iculos_pr_auc_ci95": [
+          0.04050802696602837,
+          0.11252972949125474
+        ],
+        "paired_with_minus_without_auc_ci95": [
+          0.01199400347461959,
+          0.1020596112862348
+        ],
+        "bootstrap_resamples": 200
+      }
+    },
+    "adaboost": {
+      "with_iculos": {
+        "test_auroc": 0.8552021819067082,
+        "test_pr_auc": 0.1342728621641199,
+        "model_file": "adaboost_v2.pkl"
+      },
+      "without_iculos": {
+        "test_auroc": 0.8095448462185498,
+        "test_pr_auc": 0.07486721342146775,
+        "model_file": "adaboost_noiculos.pkl"
+      },
+      "bootstrap": {
+        "with_iculos_auc_ci95": [
+          0.799413598853404,
+          0.9034330166743262
+        ],
+        "without_iculos_auc_ci95": [
+          0.7552889982212697,
+          0.8501167371528244
+        ],
+        "with_iculos_pr_auc_ci95": [
+          0.0946980044626717,
+          0.2231489272943774
+        ],
+        "without_iculos_pr_auc_ci95": [
+          0.051300261131576576,
+          0.12359986337062823
+        ],
+        "paired_with_minus_without_auc_ci95": [
+          -0.004938967928281767,
+          0.10693896211355441
+        ],
+        "bootstrap_resamples": 200
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+pandas
+numpy
+scikit-learn==1.9.0
+matplotlib
+seaborn
+tensorflow
+shap
+streamlit
+fastapi
+uvicorn[standard]
+xgboost

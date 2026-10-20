@@ -1,0 +1,59 @@
+# Dataset files
+data/
+
+# Python virtual environments and cache
+venv/
+__pycache__/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Temporary installer logs
+*.log
+
+# JavaScript dependencies and builds
+frontend/node_modules/
+frontend/dist/
+# Dataset files
+data/
+
+# Python virtual environments and cache
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Temporary installer logs
+*.log
+
+# JavaScript dependencies and builds
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# Secrets and environment variables
+.env
+.env.*
+!.env.example
+
+# Temporary scripts and backups
+temp_*.py
+frontend/src/*.backup.jsx
+src/*_backup.py
+src/*_before_fix.py
+
+# Local cache
+outputs/.matplotlib/
+
+# Intermediate model artifacts
+outputs/archive_*/
+outputs/metrics/
+outputs/shap_explainers/
+outputs/models/*.pkl
+
+# Audit spreadsheets - exclude if confidential
+AUDIT-FINAL-14OCT.xlsx
+AUDIT-FINAL-14OCT-REVISED.xlsx

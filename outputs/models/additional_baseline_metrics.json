@@ -1,0 +1,54 @@
+{
+  "GradientBoosting": {
+    "test_metrics": {
+      "ROC-AUC": 0.7960556377486341,
+      "PR-AUC": 0.07780633699483508,
+      "F1 (positive)": 0.11732152739346983
+    },
+    "cross_validation": {
+      "roc_auc_mean": 0.6933193508999961,
+      "roc_auc_std": 0.03974235915123401,
+      "f1_mean": 0.09008962157851856,
+      "f1_std": 0.04643617315393694
+    },
+    "sanity_checks": {
+      "Baseline": 0.35333937816208283,
+      "Lactate 4": 0.35333937816208283,
+      "Lactate 8": 0.35333937816208283,
+      "MAP 65": 0.35333937816208283,
+      "MAP 50": 0.35333937816208283,
+      "HR 130": 0.44464549495838884,
+      "HR 160": 0.44464549495838884,
+      "O2Sat 90": 0.3620082616298963,
+      "O2Sat 82": 0.3620082616298963,
+      "All abnormal": 0.6238318583047975
+    },
+    "parameters": "n_estimators=50, max_depth=2, subsample=0.8, 3-fold CV on ~2000 stratified samples, trained on ~10,000 samples (GB only)"
+  },
+  "AdaBoost": {
+    "test_metrics": {
+      "ROC-AUC": 0.9170270159826066,
+      "PR-AUC": 0.19699183187257718,
+      "F1 (positive)": 0.1978102189781022
+    },
+    "cross_validation": {
+      "roc_auc_mean": 0.6317322954822955,
+      "roc_auc_std": 0.05824432947621891,
+      "f1_mean": 0.031746031746031744,
+      "f1_std": 0.04489566864676491
+    },
+    "sanity_checks": {
+      "Baseline": 0.42595319509165425,
+      "Lactate 4": 0.41269619069592467,
+      "Lactate 8": 0.40121576970380274,
+      "MAP 65": 0.42595319509165425,
+      "MAP 50": 0.42595319509165425,
+      "HR 130": 0.42595319509165425,
+      "HR 160": 0.42595319509165425,
+      "O2Sat 90": 0.4414023482817766,
+      "O2Sat 82": 0.4414023482817766,
+      "All abnormal": 0.46970014365799023
+    },
+    "parameters": "n_estimators=100, max_depth=2, subsample=N/A, 3-fold CV on ~2000 stratified samples, trained on ~10,000 samples (GB only)"
+  }
+}

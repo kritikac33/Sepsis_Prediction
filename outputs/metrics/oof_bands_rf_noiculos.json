@@ -1,0 +1,7 @@
+{
+  "model": "rf",
+  "yellow": 0.029487547774478012,
+  "red": 0.04415409436450659,
+  "n_train_windows": 73804,
+  "n_train_patients": 2158
+}

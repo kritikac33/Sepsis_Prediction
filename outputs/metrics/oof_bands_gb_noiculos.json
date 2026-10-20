@@ -1,0 +1,7 @@
+{
+  "model": "gb",
+  "yellow": 0.02665766845947714,
+  "red": 0.041532019937632045,
+  "n_train_windows": 73804,
+  "n_train_patients": 2158
+}

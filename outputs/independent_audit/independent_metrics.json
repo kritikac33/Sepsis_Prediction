@@ -1,0 +1,178 @@
+{
+  "xgb": {
+    "metrics_05": {
+      "auroc": 0.8588893845626631,
+      "auprc": 0.13366148085447985,
+      "accuracy": 0.9797232420220277,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "threshold": 0.5
+    },
+    "metrics_opt": {
+      "auroc": 0.8588893845626631,
+      "auprc": 0.13366148085447985,
+      "accuracy": 0.9559446484044055,
+      "precision": 0.2112482853223594,
+      "recall": 0.42896935933147634,
+      "f1": 0.28308823529411764,
+      "threshold": 0.08
+    },
+    "confusion_matrix_05": {
+      "true_negatives": 17346,
+      "false_positives": 0,
+      "false_negatives": 359,
+      "true_positives": 0,
+      "confusion_matrix": [
+        [
+          17346,
+          0
+        ],
+        [
+          359,
+          0
+        ]
+      ]
+    },
+    "optimal_f1_threshold": 0.08,
+    "optimal_f1_score": 0.28308823529411764,
+    "prediction_stats": {
+      "min": 0.006845414638519287,
+      "max": 0.3790317475795746,
+      "mean": 0.022765440866351128,
+      "std": 0.033890195190906525
+    }
+  },
+  "rf": {
+    "metrics_05": {
+      "auroc": 0.8853318675092906,
+      "auprc": 0.20560894365851445,
+      "accuracy": 0.9797232420220277,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "threshold": 0.5
+    },
+    "metrics_opt": {
+      "auroc": 0.8853318675092906,
+      "auprc": 0.20560894365851445,
+      "accuracy": 0.9773510307822649,
+      "precision": 0.4009433962264151,
+      "recall": 0.23676880222841226,
+      "f1": 0.29772329246935203,
+      "threshold": 0.15000000000000002
+    },
+    "confusion_matrix_05": {
+      "true_negatives": 17346,
+      "false_positives": 0,
+      "false_negatives": 359,
+      "true_positives": 0,
+      "confusion_matrix": [
+        [
+          17346,
+          0
+        ],
+        [
+          359,
+          0
+        ]
+      ]
+    },
+    "optimal_f1_threshold": 0.15000000000000002,
+    "optimal_f1_score": 0.29772329246935203,
+    "prediction_stats": {
+      "min": 0.0074667617380304195,
+      "max": 0.45177165296564575,
+      "mean": 0.02175723601727345,
+      "std": 0.03268879162786969
+    }
+  },
+  "gb": {
+    "metrics_05": {
+      "auroc": 0.863992549477182,
+      "auprc": 0.18437180700929906,
+      "accuracy": 0.9798362044620164,
+      "precision": 0.6666666666666666,
+      "recall": 0.011142061281337047,
+      "f1": 0.021917808219178082,
+      "threshold": 0.5
+    },
+    "metrics_opt": {
+      "auroc": 0.863992549477182,
+      "auprc": 0.18437180700929906,
+      "accuracy": 0.9498446766450155,
+      "precision": 0.18549346016646848,
+      "recall": 0.43454038997214484,
+      "f1": 0.26,
+      "threshold": 0.060000000000000005
+    },
+    "confusion_matrix_05": {
+      "true_negatives": 17344,
+      "false_positives": 2,
+      "false_negatives": 355,
+      "true_positives": 4,
+      "confusion_matrix": [
+        [
+          17344,
+          2
+        ],
+        [
+          355,
+          4
+        ]
+      ]
+    },
+    "optimal_f1_threshold": 0.060000000000000005,
+    "optimal_f1_score": 0.26,
+    "prediction_stats": {
+      "min": 0.00886643735714331,
+      "max": 0.5802443161317299,
+      "mean": 0.020977223872270453,
+      "std": 0.03423503733131032
+    }
+  },
+  "adaboost": {
+    "metrics_05": {
+      "auroc": 0.8552021819067082,
+      "auprc": 0.1342728621641199,
+      "accuracy": 0.9797232420220277,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "threshold": 0.5
+    },
+    "metrics_opt": {
+      "auroc": 0.8552021819067082,
+      "auprc": 0.1342728621641199,
+      "accuracy": 0.9413160124258684,
+      "precision": 0.15447154471544716,
+      "recall": 0.4233983286908078,
+      "f1": 0.22635889798957556,
+      "threshold": 0.39
+    },
+    "confusion_matrix_05": {
+      "true_negatives": 17346,
+      "false_positives": 0,
+      "false_negatives": 359,
+      "true_positives": 0,
+      "confusion_matrix": [
+        [
+          17346,
+          0
+        ],
+        [
+          359,
+          0
+        ]
+      ]
+    },
+    "optimal_f1_threshold": 0.39,
+    "optimal_f1_score": 0.22635889798957556,
+    "prediction_stats": {
+      "min": 0.23499709176316821,
+      "max": 0.4989922323394077,
+      "mean": 0.3133144812411141,
+      "std": 0.04347960974910213
+    }
+  }
+}

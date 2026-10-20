@@ -1,0 +1,200 @@
+SEPSIS PROTOTYPE AUDIT REPORT
+Data Leakage, Overfitting, and Underfitting Analysis
+====================================================
+
+1. SPLIT LEAKAGE CHECK
+----------------------
+Total windows: 68,083
+Total unique patients: 2,000
+
+Window-level split (current implementation):
+  - Train windows: 54,466
+  - Test windows: 13,617
+  - Unique patients in train: 2,000
+  - Unique patients in test: 1,966
+  - Patients appearing in BOTH train and test: 1,966
+  - Percentage of test windows with patient also in train: 100.00%
+
+Patient-level split (proposed):
+  - Train windows: 54,988
+  - Test windows: 13,095
+  - Unique patients in train: 1,600
+  - Unique patients in test: 400
+  - Patients appearing in BOTH train and test: 0
+  - Percentage of test windows with patient also in train: 0.00%
+
+CONCLUSION: The current implementation uses WINDOW-level splitting with 100% patient overlap.
+This is SEVERE DATA LEAKAGE - the same patients appear in both train and test sets.
+
+
+2. PATIENT-LEVEL RE-EVALUATION
+-------------------------------
+All models evaluated with identical hyperparameters, monotone constraints, and features (no ICULOS).
+
+XGBoost:
+  Window-level: ROC-AUC=0.9896, PR-AUC=0.6925, F1=0.5915
+  Patient-level: ROC-AUC=0.7194, PR-AUC=0.0752, F1=0.0000
+
+Random Forest:
+  Window-level: ROC-AUC=0.9961, PR-AUC=0.8536, F1=0.4295
+  Patient-level: ROC-AUC=0.7351, PR-AUC=0.0797, F1=0.1204
+
+Gradient Boosting:
+  Window-level: ROC-AUC=0.8264, PR-AUC=0.1847, F1=0.0123
+  Patient-level: ROC-AUC=0.7914, PR-AUC=0.1253, F1=0.0057
+
+AdaBoost:
+  Window-level: ROC-AUC=0.9080, PR-AUC=0.1974, F1=0.0754
+  Patient-level: ROC-AUC=0.7160, PR-AUC=0.0798, F1=0.0672
+
+
+3. OVERFITTING / UNDERFITTING DIAGNOSTICS (patient-level split)
+-------------------------------------------------------------
+
+XGBoost:
+  Train ROC-AUC: 0.9974, Test ROC-AUC: 0.7194, Gap: 0.2780
+  Train PR-AUC: 0.8790, Test PR-AUC: 0.0752, Gap: 0.8038
+  Train F1: 0.0000, Test F1: 0.0000, Gap: 0.0000
+  Verdict: OVERFITTING
+
+Random Forest:
+  Train ROC-AUC: 0.9990, Test ROC-AUC: 0.7351, Gap: 0.2639
+  Train PR-AUC: 0.9503, Test PR-AUC: 0.0797, Gap: 0.8707
+  Verdict: OVERFITTING
+
+Gradient Boosting:
+  Train ROC-AUC: 0.8433, Test ROC-AUC: 0.7914, Gap: 0.0519
+  Train PR-AUC: 0.2490, Test PR-AUC: 0.1253, Gap: 0.1237
+  Verdict: OVERFITTING
+
+AdaBoost:
+  Train ROC-AUC: 0.9506, Test ROC-AUC: 0.7160, Gap: 0.2346
+  Train PR-AUC: 0.2866, Test PR-AUC: 0.0798, Gap: 0.2068
+  Verdict: OVERFITTING
+
+
+4. BASELINE SANITY
+------------------
+
+Dummy Classifier (majority class):
+  ROC-AUC: 0.5000, PR-AUC: 0.0267, F1: 0.0000
+
+Logistic Regression:
+  ROC-AUC: 0.7645, PR-AUC: 0.0859, F1: 0.1289
+
+Permutation Test (shuffle y 20 times):
+  Mean permutation AUC: 0.3795 ± 0.0412
+  OK: Permutation AUC is near 0.5, as expected.
+
+
+5. LEAKAGE IN FEATURES (PREPROCESSING)
+---------------------------------------
+
+Checking 01_preprocessing.py...
+ISSUE FOUND: Normalization is fit on the complete dataset (all windows)
+  This means train/test contamination - statistics leak from test to train
+ISSUE FOUND: Median imputation statistics are computed on the complete dataset
+  This means train/test contamination - medians leak from test to train
+
+SUMMARY: Preprocessing leakage detected!
+  Normalization and median imputation should be fit on TRAINING data only
+  Then applied to test data using the fitted statistics
+
+
+6. LEAKAGE IN FEATURES (SHAP ANALYSIS)
+---------------------------------------
+
+Top 10 SHAP features (patient-level model):
+  1. Unit2_t0: 0.5154
+  2. Lactate_t5: 0.2855
+  3. FiO2_t5: 0.1760
+  4. HospAdmTime_t0: 0.1741
+  5. Creatinine_t5: 0.1389
+  6. DBP_t0: 0.1329
+  7. Hgb_t0: 0.1285
+  8. Temp_t5: 0.1175
+  9. Unit2_t1: 0.1071
+  10. Lactate_t4: 0.0914
+
+WARNING: Potentially leaky features detected:
+  Unit2_t0: 0.5154 - Unit flag - potential leakage
+  HospAdmTime_t0: 0.1741 - Hospital admission time - potential leakage
+  Unit2_t1: 0.1071 - Unit flag - potential leakage
+
+
+7. FINAL VERDICT TABLE
+----------------------
+
+Model           | Window-split AUC | Patient-split AUC | Train-Test gap | Verdict
+----------------|------------------|-------------------|----------------|-----------
+XGBoost         | 0.9896           | 0.7194            | 0.2780         | OVERFITTING
+RandomForest    | 0.9961           | 0.7351            | 0.2639         | OVERFITTING
+GradientBoosting| 0.8264           | 0.7914            | 0.0519         | OVERFITTING
+AdaBoost        | 0.9080           | 0.7160            | 0.2346         | OVERFITTING
+
+
+CRITICAL FINDINGS
+=================
+
+1. SEVERE DATA LEAKAGE IN SPLIT:
+   - Current window-level split has 100% patient overlap
+   - All models show dramatically inflated performance on window-level split
+   - XGBoost: 0.9896 (window) vs 0.7194 (patient) - 0.27 AUC drop
+   - RandomForest: 0.9961 (window) vs 0.7351 (patient) - 0.26 AUC drop
+   - This is the MAJOR issue - models are memorizing patient-specific patterns
+
+2. PREPROCESSING LEAKAGE:
+   - Normalization and median imputation are fit on ALL data, not just training
+   - This causes train/test contamination
+   - Must be fixed: fit statistics on training set only, then apply to test
+
+3. FEATURE LEAKAGE:
+   - Unit flags (Unit2_t0, Unit2_t1) are top features - potential leakage
+   - HospAdmTime_t0 is also a top feature - potential time-based leakage
+   - These should be excluded or carefully justified
+
+4. OVERFITTING:
+   - All models show significant overfitting on patient-level split
+   - Train-test gaps > 0.05 in all cases
+   - XGBoost has the worst overfitting (0.28 AUC gap, 0.80 PR-AUC gap)
+   - Models need regularization or simpler architectures
+
+5. BASELINE COMPARISON:
+   - Logistic Regression (0.7645 AUC) performs similarly to complex models on patient-level split
+   - This suggests the boosted models are not adding significant value
+   - The high window-level performance was due to leakage, not model quality
+
+
+RECOMMENDATIONS
+===============
+
+1. IMMEDIATE FIXES:
+   - Change all train/test splits to patient-level (GroupShuffleSplit or GroupKFold)
+   - Fix preprocessing: fit normalization/imputation on training data only
+   - Exclude Unit flags and HospAdmTime from features
+
+2. MODEL IMPROVEMENTS:
+   - Add regularization to reduce overfitting
+   - Consider simpler models (Logistic Regression is competitive)
+   - Use proper hyperparameter tuning with patient-level CV
+
+3. REPORTING:
+   - Report PATIENT-LEVEL metrics, not window-level
+   - Honest numbers: XGBoost ~0.72 AUC, not 0.99 AUC
+   - The window-level numbers are inflated due to leakage and should not be reported
+
+
+WHICH NUMBERS TO REPORT
+========================
+
+Report the PATIENT-LEVEL numbers:
+
+XGBoost: ROC-AUC=0.7194, PR-AUC=0.0752, F1=0.0000
+RandomForest: ROC-AUC=0.7351, PR-AUC=0.0797, F1=0.1204
+GradientBoosting: ROC-AUC=0.7914, PR-AUC=0.1253, F1=0.0057
+AdaBoost: ROC-AUC=0.7160, PR-AUC=0.0798, F1=0.0672
+
+Logistic Regression baseline: ROC-AUC=0.7645, PR-AUC=0.0859, F1=0.1289
+
+DO NOT report the window-level numbers (0.98+, 0.85+, etc.) as they are
+inflated due to patient leakage.

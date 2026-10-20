@@ -1,0 +1,19 @@
+{
+  "dataset": {
+    "samples": 68083,
+    "positive_samples": 1619
+  },
+  "test": {
+    "Accuracy": 0.7757215245648821,
+    "ROC-AUC": 0.9510541378410432,
+    "PR-AUC (average precision)": 0.41706050684129964,
+    "F1 (positive)": 0.1701086956521739
+  },
+  "cross_validation": {
+    "folds": 3,
+    "roc_auc_mean": 0.9483761445643162,
+    "roc_auc_std": 0.005241928309552753,
+    "f1_mean": 0.1684747070236883,
+    "f1_std": 0.012576556472010518
+  }
+}

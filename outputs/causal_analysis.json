@@ -1,0 +1,93 @@
+{
+  "Lactate": {
+    "naive": {
+      "coefficient": 0.17394022888581456,
+      "std_error": 0.009219932541785195,
+      "or": 1.1899844369989967,
+      "or_ci_low": 1.168673673233612,
+      "or_ci_high": 1.2116838025294978
+    },
+    "adjusted": {
+      "coefficient": 0.16477744463163457,
+      "std_error": 0.02526416709430976,
+      "or": 1.179130667647438,
+      "or_ci_low": 1.1221658213301906,
+      "or_ci_high": 1.238987237856348
+    },
+    "percent_change_log_odds": -5.267777507752404,
+    "plain_language": "After adjusting for ICULOS, Age, and Gender, each 1 SD increase in Lactate increases sepsis odds by 17.9% (OR=1.179, 95% CI [1.122, 1.239])."
+  },
+  "HR": {
+    "naive": {
+      "coefficient": 0.3286431279474744,
+      "std_error": 0.013848534631329517,
+      "or": 1.3890820425623112,
+      "or_ci_low": 1.3518857895010363,
+      "or_ci_high": 1.4273017261918657
+    },
+    "adjusted": {
+      "coefficient": 0.3184115267189975,
+      "std_error": 0.041753721803826714,
+      "or": 1.374941970175202,
+      "or_ci_low": 1.2669035018901595,
+      "or_ci_high": 1.4921936978852628
+    },
+    "percent_change_log_odds": -3.1132862239895096,
+    "plain_language": "After adjusting for ICULOS, Age, and Gender, each 1 SD increase in HR increases sepsis odds by 37.5% (OR=1.375, 95% CI [1.267, 1.492])."
+  },
+  "MAP": {
+    "naive": {
+      "coefficient": -0.045492432835776565,
+      "std_error": 0.015007670668459292,
+      "or": 0.9555268331730634,
+      "or_ci_low": 0.9278298383670069,
+      "or_ci_high": 0.9840506213086346
+    },
+    "adjusted": {
+      "coefficient": -0.07782170696420937,
+      "std_error": 0.04390835292282024,
+      "or": 0.9251293559615925,
+      "or_ci_low": 0.8488434548926804,
+      "or_ci_high": 1.0082711014955261
+    },
+    "percent_change_log_odds": -71.06516867352086,
+    "plain_language": "After adjusting for ICULOS, Age, and Gender, each 1 SD increase in MAP decreases sepsis odds by 7.5% (OR=0.925, 95% CI [0.849, 1.008])."
+  },
+  "Resp": {
+    "naive": {
+      "coefficient": 0.31462412654250704,
+      "std_error": 0.01276785363557728,
+      "or": 1.369744363635703,
+      "or_ci_low": 1.3358924805650436,
+      "or_ci_high": 1.4044540627387911
+    },
+    "adjusted": {
+      "coefficient": 0.2506272533563473,
+      "std_error": 0.03504333604364843,
+      "or": 1.284831078590645,
+      "or_ci_low": 1.1995465097329694,
+      "or_ci_high": 1.3761791536368875
+    },
+    "percent_change_log_odds": -20.340739246363395,
+    "plain_language": "After adjusting for ICULOS, Age, and Gender, each 1 SD increase in Resp increases sepsis odds by 28.5% (OR=1.285, 95% CI [1.200, 1.376])."
+  },
+  "Temp": {
+    "naive": {
+      "coefficient": 0.02135838208859352,
+      "std_error": 0.016305017432951468,
+      "or": 1.0215881049188642,
+      "or_ci_low": 0.98945710520653,
+      "or_ci_high": 1.0547625062471768
+    },
+    "adjusted": {
+      "coefficient": -0.00948874574844691,
+      "std_error": 0.06105852319130301,
+      "or": 0.9905561303480381,
+      "or_ci_low": 0.8788322405285948,
+      "or_ci_high": 1.1164832172974357
+    },
+    "percent_change_log_odds": -144.42633205590226,
+    "plain_language": "After adjusting for ICULOS, Age, and Gender, each 1 SD increase in Temp decreases sepsis odds by 0.9% (OR=0.991, 95% CI [0.879, 1.116])."
+  },
+  "disclaimer": "These are covariate-adjusted associations from observational data, not proof of causation."
+}

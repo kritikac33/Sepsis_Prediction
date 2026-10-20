@@ -1,0 +1,5 @@
+Model,ROC-AUC,PR-AUC,F1 (positive),CV-AUC (mean±std),CV-F1 (mean±std),Monotonic constraints?,Uses ICULOS?,CV data source,Sanity check passes
+RandomForest,0.7746614063096423,0.2255930246073004,0.1694915254237288,0.7680 ± 0.0507,0.2607 ± 0.1452,No,No,Stratified subsample (~2000) (for speed),2/5
+XGBoost,0.7670188431115235,0.24984357369757906,0.24242424242424243,0.9977 ± 0.0004,0.0000 ± 0.0000,Yes,No,Full dataset,5/5
+GradientBoosting,0.7960556377486341,0.07780633699483508,0.11732152739346983,0.6933 ± 0.0397,0.0901 ± 0.0464,No,No,Stratified subsample (~2000) (for speed),5/5
+AdaBoost,0.9170270159826066,0.19699183187257718,0.1978102189781022,0.6317 ± 0.0582,0.0317 ± 0.0449,No,No,Stratified subsample (~2000) (for speed),4/5

@@ -1,0 +1,44 @@
+{
+  "dataset": {
+    "samples": 15273,
+    "positive_samples": 365
+  },
+  "test": {
+    "Accuracy": 0.9927986906710311,
+    "ROC-AUC": 0.9969129847578623,
+    "PR-AUC (average precision)": 0.9154310256167592,
+    "confusion_matrix": [
+      [
+        2970,
+        12
+      ],
+      [
+        10,
+        63
+      ]
+    ],
+    "per_class": [
+      {
+        "Class": "No Sepsis (0)",
+        "Precision": 0.9966442953020134,
+        "Recall": 0.9959758551307847,
+        "F1": 0.996309963099631,
+        "Support": 2982
+      },
+      {
+        "Class": "Sepsis (1)",
+        "Precision": 0.84,
+        "Recall": 0.863013698630137,
+        "F1": 0.8513513513513513,
+        "Support": 73
+      }
+    ]
+  },
+  "cross_validation": {
+    "folds": 5,
+    "roc_auc_mean": 0.9976738808684432,
+    "roc_auc_std": 0.0003862500009526471,
+    "f1_mean": 0.0,
+    "f1_std": 0.0
+  }
+}

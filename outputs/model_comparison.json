@@ -1,0 +1,50 @@
+[
+  {
+    "Model": "RandomForest",
+    "ROC-AUC": 0.7746614063096423,
+    "PR-AUC": 0.2255930246073004,
+    "F1 (positive)": 0.1694915254237288,
+    "CV-AUC (mean\u00b1std)": "0.7680 \u00b1 0.0507",
+    "CV-F1 (mean\u00b1std)": "0.2607 \u00b1 0.1452",
+    "Monotonic constraints?": "No",
+    "Uses ICULOS?": "No",
+    "CV data source": "Stratified subsample (~2000) (for speed)",
+    "Sanity check passes": "2/5"
+  },
+  {
+    "Model": "XGBoost",
+    "ROC-AUC": 0.7670188431115235,
+    "PR-AUC": 0.24984357369757906,
+    "F1 (positive)": 0.24242424242424243,
+    "CV-AUC (mean\u00b1std)": "0.9977 \u00b1 0.0004",
+    "CV-F1 (mean\u00b1std)": "0.0000 \u00b1 0.0000",
+    "Monotonic constraints?": "Yes",
+    "Uses ICULOS?": "No",
+    "CV data source": "Full dataset",
+    "Sanity check passes": "5/5"
+  },
+  {
+    "Model": "GradientBoosting",
+    "ROC-AUC": 0.7960556377486341,
+    "PR-AUC": 0.07780633699483508,
+    "F1 (positive)": 0.11732152739346983,
+    "CV-AUC (mean\u00b1std)": "0.6933 \u00b1 0.0397",
+    "CV-F1 (mean\u00b1std)": "0.0901 \u00b1 0.0464",
+    "Monotonic constraints?": "No",
+    "Uses ICULOS?": "No",
+    "CV data source": "Stratified subsample (~2000) (for speed)",
+    "Sanity check passes": "5/5"
+  },
+  {
+    "Model": "AdaBoost",
+    "ROC-AUC": 0.9170270159826066,
+    "PR-AUC": 0.19699183187257718,
+    "F1 (positive)": 0.1978102189781022,
+    "CV-AUC (mean\u00b1std)": "0.6317 \u00b1 0.0582",
+    "CV-F1 (mean\u00b1std)": "0.0317 \u00b1 0.0449",
+    "Monotonic constraints?": "No",
+    "Uses ICULOS?": "No",
+    "CV data source": "Stratified subsample (~2000) (for speed)",
+    "Sanity check passes": "4/5"
+  }
+]

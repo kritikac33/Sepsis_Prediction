@@ -1,0 +1,79 @@
+{
+  "sirs_ge2": {
+    "roc_auc": 0.642698082962943,
+    "clinical_metrics": {
+      "sensitivity": 0.6100278551532033,
+      "specificity": 0.6398016833852185,
+      "precision": 0.03386423380238132,
+      "f1": 0.06416642250219748
+    },
+    "xgb_at_same_sensitivity": {
+      "threshold": 0.02411332167685032,
+      "metrics": {
+        "sensitivity": 0.6128133704735376,
+        "specificity": 0.8689034936008302,
+        "precision": 0.08821170809943865,
+        "f1": 0.15422362425517
+      },
+      "lift_over_base_rate": 4.350385214207692
+    }
+  },
+  "sirs_ge1": {
+    "roc_auc": 0.642698082962943,
+    "clinical_metrics": {
+      "sensitivity": 0.8774373259052924,
+      "specificity": 0.2458780122218379,
+      "precision": 0.02351448193490594,
+      "f1": 0.04580152671755725
+    },
+    "xgb_at_same_sensitivity": {
+      "threshold": 0.020431339740753174,
+      "metrics": {
+        "sensitivity": 0.8885793871866295,
+        "specificity": 0.6621123025481379,
+        "precision": 0.051618122977346276,
+        "f1": 0.09756843554060254
+      },
+      "lift_over_base_rate": 2.545679296139041
+    }
+  },
+  "qsofa_ge2": {
+    "roc_auc": 0.5493474288823219,
+    "clinical_metrics": {
+      "sensitivity": 0.116991643454039,
+      "specificity": 0.9540528075637035,
+      "precision": 0.050059594755661505,
+      "f1": 0.07011686143572621
+    },
+    "xgb_at_same_sensitivity": {
+      "threshold": 0.10377900302410126,
+      "metrics": {
+        "sensitivity": 0.11420612813370473,
+        "specificity": 0.9848380029978093,
+        "precision": 0.13486842105263158,
+        "f1": 0.12368024132730014
+      },
+      "lift_over_base_rate": 6.651379929629087
+    }
+  },
+  "qsofa_ge1": {
+    "roc_auc": 0.5493474288823219,
+    "clinical_metrics": {
+      "sensitivity": 0.43175487465181056,
+      "specificity": 0.6452784503631961,
+      "precision": 0.024571972098922003,
+      "f1": 0.04649767511624419
+    },
+    "xgb_at_same_sensitivity": {
+      "threshold": 0.0363190583884716,
+      "metrics": {
+        "sensitivity": 0.43175487465181056,
+        "specificity": 0.9554364118528768,
+        "precision": 0.16702586206896552,
+        "f1": 0.2408702408702409
+      },
+      "lift_over_base_rate": 8.237306094515416
+    }
+  },
+  "base_rate": 0.020276757977972324
+}

@@ -1,0 +1,7 @@
+{
+  "model": "adaboost",
+  "yellow": 0.35465597117827574,
+  "red": 0.38807042700953315,
+  "n_train_windows": 73804,
+  "n_train_patients": 2158
+}
